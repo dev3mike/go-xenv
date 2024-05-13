@@ -53,9 +53,9 @@ func ValidateEnv(envStruct interface{}) error{
 		return fmt.Errorf("error mapping env to struct: %w", err)
 	}
 
-	d := envStruct
+	s := envStruct
 
-	if  err := xmapper.MapStructs(envStruct, d); err != nil {
+	if  err := xmapper.MapStructs(s, envStruct); err != nil {
 		return fmt.Errorf("error validating env: %w", err)
 	}
 
