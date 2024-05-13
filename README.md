@@ -34,7 +34,7 @@ Picture this: you're launching your Go application, and every environment variab
        }
 
        // Create an instance of Environment to hold our settings
-       Environment := &Env{}
+       Environment := Env{}
 
        // Validate environment variables
        if err := xenv.ValidateEnv(&Environment); err != nil {
