@@ -31,18 +31,18 @@ Picture this: you're launching your Go application, and every environment variab
         // Load environment variables from a .env file
         if err := xenv.LoadEnvFile(".env"); err != nil {
             log.Panic("Error loading .env file: ", err)
-   
+        }
 
-   // Create an instance of Environment to hold our settings
-   Env = Environment{}
+        // Create an instance of Environment to hold our settings
+        Env = Environment{}
 
-   // Validate environment variables
-   if err := xenv.ValidateEnv(&Env); err != nil {
-        log.Panic("Failed to validate environment: ", err)
-   }
+        // Validate environment variables
+        if err := xenv.ValidateEnv(&Env); err != nil {
+            log.Panic("Failed to validate environment: ", err)
+        }
 
-   log.Println("Environment validated successfully! 🎉")
-   }
+        log.Println("Environment validated successfully! 🎉")
+    }
    ```
 
    3. **Integrate with Your Main Application**
