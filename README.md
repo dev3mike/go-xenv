@@ -20,21 +20,16 @@ Picture this: you're launching your Go application, and every environment variab
        "log"
    )
 
-   type Environment struct {
+   var Env struct {
         Host       string `json:"HOST" validators:"required,minLength:3,maxLength:50"`
         AdminEmail string `json:"ADMIN_EMAIL" validators:"email"`
    }
-
-   var Env Environment
 
    func init() {
         // Load environment variables from a .env file
         if err := xenv.LoadEnvFile(".env"); err != nil {
             log.Panic("Error loading .env file: ", err)
         }
-
-        // Create an instance of Environment to hold our settings
-        Env = Environment{}
 
         // Validate environment variables
         if err := xenv.ValidateEnv(&Env); err != nil {
