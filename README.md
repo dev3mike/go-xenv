@@ -51,13 +51,17 @@ Picture this: you're launching your Go application, and every environment variab
    package main
 
    import (
-       _ "path/to/your/project/environments"
+       "path/to/your/project/environments"
        "log"
    )
 
    func main() {
        // Application logic goes here
        log.Println("Application is running with validated environment settings!")
+
+       // This is how you can get your validated and transformed env variables
+       host := environments.Env.Host
+       adminEmail := environments.Env.AdminEmail
    }
    ```
    
