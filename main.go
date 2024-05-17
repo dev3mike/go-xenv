@@ -47,15 +47,13 @@ func LoadEnvFile(envFilePath string) error {
 	return nil
 }
 
-func ValidateEnv(envStruct interface{}) error{
-	err := mapEnvToStruct(envStruct);
+func ValidateEnv(envStruct interface{}) error {
+	err := mapEnvToStruct(envStruct)
 	if err != nil {
 		return fmt.Errorf("error mapping env to struct: %w", err)
 	}
 
-	s := envStruct
-
-	if  err := xmapper.MapStructs(s, envStruct); err != nil {
+	if err := xmapper.ValidateStruct(envStruct); err != nil {
 		return fmt.Errorf("error validating env: %w", err)
 	}
 

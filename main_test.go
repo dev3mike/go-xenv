@@ -8,8 +8,9 @@ import (
 )
 
 type Environment struct {
-	Host       string `json:"HOST" validator:"required,minLength:3,maxLength:50"`
-	AdminEmail string `json:"ADMIN_EMAIL" validator:"email"`
+	Host       string `json:"HOST" validators:"required,minLength:3,maxLength:50"`
+	AdminEmail string `json:"ADMIN_EMAIL" validators:"email"`
+	Code       string `json:"CODE" transformers:"uppercase"`
 }
 
 func TestEnvironmentValidation(t *testing.T) {
@@ -17,8 +18,10 @@ func TestEnvironmentValidation(t *testing.T) {
 	t.Run("ValidEnvironment", func(t *testing.T) {
 		os.Setenv("HOST", "example.com")
 		os.Setenv("ADMIN_EMAIL", "admin@example.com")
+		os.Setenv("CODE", "abc")
 		defer os.Unsetenv("HOST")
 		defer os.Unsetenv("ADMIN_EMAIL")
+		defer os.Unsetenv("CODE")
 
 		env := &Environment{}
 		err := xenv.ValidateEnv(env)
@@ -30,6 +33,9 @@ func TestEnvironmentValidation(t *testing.T) {
 		}
 		if env.AdminEmail != "admin@example.com" {
 			t.Errorf("Expected ADMIN_EMAIL=admin@example.com, got ADMIN_EMAIL=%v", env.AdminEmail)
+		}
+		if env.Code != "ABC" {
+			t.Errorf("Expected CODE=ABC, got CODE=%v", env.Code)
 		}
 	})
 

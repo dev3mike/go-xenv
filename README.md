@@ -21,8 +21,8 @@ Picture this: you're launching your Go application, and every environment variab
    )
 
    type Environment struct {
-        Host       string `json:"HOST" validator:"required,minLength:3,maxLength:50"`
-        AdminEmail string `json:"ADMIN_EMAIL" validator:"email"`
+        Host       string `json:"HOST" validators:"required,minLength:3,maxLength:50"`
+        AdminEmail string `json:"ADMIN_EMAIL" validators:"email"`
    }
 
    var Env Environment
@@ -60,6 +60,29 @@ Picture this: you're launching your Go application, and every environment variab
        log.Println("Application is running with validated environment settings!")
    }
    ```
+   
+#### Use Transformers
+You can also use transformers to cleanup the environment variables when needed
+
+```go
+   type Environment struct {
+        Host       string `json:"HOST" validators:"required,minLength:3,maxLength:50" transformers:"trim"`
+        AdminEmail string `json:"ADMIN_EMAIL" validators:"email" transformers:"trim,lowercase"`
+   }
+```
+
+#### Built-in Transformers
+| Transformer       | Description                        |
+|-------------------|------------------------------------|
+| `uppercase`       | Converts text to uppercase letters |
+| `lowercase`       | Converts text to lowercase letters |
+| `trim`            | Removes whitespace from both sides of the text |
+| `trimLeft`        | Removes whitespace from the left side of the text |
+| `trimRight`       | Removes whitespace from the right side of the text |
+| `base64Encode`    | Encodes text to Base64 format      |
+| `base64Decode`    | Decodes Base64 text to original format |
+| `urlEncode`       | Encodes text to be URL-friendly    |
+| `urlDecode`       | Decodes URL-encoded text to original format |
 
 #### Why Choose xEnv? 🤔
 With xEnv, handling environment variables becomes a breeze. You get the benefits of automatically loading and validating variables from `.env` files—functionality that Go doesn't provide out of the box. Whether your project is small or large, xEnv simplifies your configuration management, allowing you to focus more on developing great features.
