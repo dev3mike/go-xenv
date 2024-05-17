@@ -4,3 +4,5 @@ github.com/dev3mike/go-xmapper v1.0.8 h1:+BobtaMzDqNJu8dsFebbHrHd+204xAXdgxanjDm
 github.com/dev3mike/go-xmapper v1.0.8/go.mod h1:MRamTjqYCK2RcEU1/LaXKF1UGVOcy0VtzNPJ2oJLz2A=
 github.com/dev3mike/go-xmapper v1.0.9 h1:0pDWMqH1nrk0v58EpbFarPlr9D1/RCcULrtpS6YUREc=
 github.com/dev3mike/go-xmapper v1.0.9/go.mod h1:MRamTjqYCK2RcEU1/LaXKF1UGVOcy0VtzNPJ2oJLz2A=
+github.com/dev3mike/go-xmapper v1.0.16 h1:SGSB5c46s1yuLN2bugvc8cY2G5rQ6Rp0CE0mAKq/C3Y=
+github.com/dev3mike/go-xmapper v1.0.16/go.mod h1:MRamTjqYCK2RcEU1/LaXKF1UGVOcy0VtzNPJ2oJLz2A=
